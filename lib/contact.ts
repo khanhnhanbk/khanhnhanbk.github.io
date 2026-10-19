@@ -5,7 +5,7 @@ export const PHONE_DISPLAY = "(+84) 349 796 850";
 export const ZALO_URL = "https://zalo.me/84349796850";
 export const HAN_NGU_URL = "https://han-ngu-studio.vercel.app";
 
-export const SITE_URL = "https://khanhnhan.vercel.app";
+export const SITE_URL = "https://khanhnhanbk.github.io";
 
 // Live links for projects, keyed by the project id used in the dictionaries.
 export const PROJECT_LINKS: Record<string, string | undefined> = {
