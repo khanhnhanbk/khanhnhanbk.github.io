@@ -6,15 +6,17 @@ import Image from "next/image";
 const hasAvatar = fs.existsSync(path.join(process.cwd(), "public/avatar.jpg"));
 
 export default function Avatar({ alt }: { alt: string }) {
+  const className = "h-56 w-56 rounded-full sm:h-64 sm:w-64";
+
   if (hasAvatar) {
     return (
       <Image
         src="/avatar.jpg"
         alt={alt}
-        width={160}
-        height={160}
+        width={256}
+        height={256}
         priority
-        className="h-40 w-40 rounded-full object-cover shadow-lg ring-4 ring-white"
+        className={`${className} object-cover`}
       />
     );
   }
@@ -23,7 +25,7 @@ export default function Avatar({ alt }: { alt: string }) {
     <div
       role="img"
       aria-label={alt}
-      className="flex h-40 w-40 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 text-5xl font-bold text-white shadow-lg ring-4 ring-white"
+      className={`${className} flex items-center justify-center bg-gradient-to-br from-indigo-500 to-violet-600 text-6xl font-bold text-white`}
     >
       KN
     </div>

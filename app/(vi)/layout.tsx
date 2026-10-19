@@ -11,7 +11,7 @@ export default function ViLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="vi" className="scroll-smooth">
+    <html lang="vi" className="motion-safe:scroll-smooth">
       <body className={`${beVietnamPro.className} antialiased`}>{children}</body>
     </html>
   );

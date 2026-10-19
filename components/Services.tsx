@@ -1,40 +1,30 @@
+import Icon from "@/components/Icon";
 import SectionTitle from "@/components/SectionTitle";
 import type { Dictionary } from "@/lib/i18n/vi";
 
-const ICONS = [
-  // Website
-  <path key="0" d="M3 5h18v14H3zM3 9h18M7 7h.01M10 7h.01" />,
-  // Web app / dashboard
-  <path key="1" d="M4 4h7v7H4zM13 4h7v4h-7zM13 10h7v10h-7zM4 13h7v7H4z" />,
-  // Tools / automation
-  <path key="2" d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z" />,
-  // Maintenance
-  <path key="3" d="M4 12a8 8 0 0 1 14-5.3M20 4v4h-4M20 12a8 8 0 0 1-14 5.3M4 20v-4h4" />,
-];
-
 export default function Services({ services }: { services: Dictionary["services"] }) {
   return (
-    <section id="services" className="mx-auto max-w-5xl px-4 py-20 sm:px-6">
-      <SectionTitle>{services.title}</SectionTitle>
-      <ul className="mt-10 grid gap-5 sm:grid-cols-2">
-        {services.items.map((item, i) => (
+    <section id="services" className="mx-auto max-w-6xl px-4 py-24 sm:px-6">
+      <SectionTitle eyebrow={services.eyebrow} title={services.title} subtitle={services.subtitle} />
+      <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {services.items.map((item) => (
           <li
             key={item.title}
-            className="rounded-2xl border border-slate-200 p-6 transition hover:border-blue-300 hover:shadow-sm"
+            data-reveal
+            className="group relative overflow-hidden rounded-2xl bg-white/[0.03] p-6 ring-1 ring-white/10 transition hover:-translate-y-1 hover:bg-white/[0.06] hover:ring-violet-400/40"
           >
-            <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-50 text-blue-600">
-              <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                {ICONS[i % ICONS.length]}
-              </svg>
+            <div
+              className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-violet-500/20 opacity-0 blur-2xl transition group-hover:opacity-100"
+              aria-hidden="true"
+            />
+            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500/20 to-fuchsia-500/20 text-violet-300 ring-1 ring-violet-400/30">
+              <Icon name={item.icon} className="h-6 w-6" />
             </div>
-            <h3 className="mt-4 text-lg font-semibold text-slate-900">{item.title}</h3>
-            <p className="mt-2 text-slate-600">{item.description}</p>
+            <h3 className="mt-5 text-lg font-semibold text-white">{item.title}</h3>
+            <p className="mt-2 leading-relaxed text-slate-400">{item.description}</p>
           </li>
         ))}
       </ul>
-      <p className="mt-8 rounded-2xl bg-blue-50 px-6 py-4 text-center font-medium text-blue-900">
-        {services.note}
-      </p>
     </section>
   );
 }

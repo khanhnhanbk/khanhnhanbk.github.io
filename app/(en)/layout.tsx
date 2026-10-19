@@ -11,7 +11,7 @@ export default function EnLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="motion-safe:scroll-smooth">
       <body className={`${beVietnamPro.className} antialiased`}>{children}</body>
     </html>
   );
