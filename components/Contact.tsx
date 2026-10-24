@@ -51,7 +51,7 @@ export default function Contact({ contact }: { contact: Dictionary["contact"] })
               <a
                 href={c.href}
                 {...(c.external ? { target: "_blank", rel: "noopener" } : {})}
-                className="flex h-full flex-col items-center gap-2 rounded-2xl bg-white/10 p-5 ring-1 ring-white/20 backdrop-blur transition hover:bg-white/20"
+                className="glass flex h-full flex-col items-center gap-2 rounded-2xl bg-white/10 p-5 hover:-translate-y-0.5 hover:bg-white/20 active:scale-95"
               >
                 <Icon name={c.icon} className="h-6 w-6 text-white" />
                 <span className="font-semibold text-white">{c.label}</span>

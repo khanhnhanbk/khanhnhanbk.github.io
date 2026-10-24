@@ -34,14 +34,14 @@ export default function Hero({ hero }: { hero: Dictionary["hero"] }) {
               href={ZALO_URL}
               target="_blank"
               rel="noopener"
-              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-indigo-500 via-violet-500 to-fuchsia-500 px-7 font-semibold text-white shadow-xl shadow-violet-500/25 transition hover:brightness-110"
+              className="inline-flex min-h-12 items-center justify-center gap-2 glass glass-tint rounded-full px-7 font-semibold text-white hover:-translate-y-0.5 active:scale-95"
             >
               <Icon name="chat" strokeWidth={2} />
               {hero.ctaPrimary}
             </a>
             <a
               href="#projects"
-              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-white/5 px-7 font-semibold text-white ring-1 ring-white/15 transition hover:bg-white/10"
+              className="inline-flex min-h-12 items-center justify-center gap-2 glass rounded-full px-7 font-semibold text-white hover:-translate-y-0.5 hover:bg-white/10 active:scale-95"
             >
               {hero.ctaSecondary}
               <Icon name="arrowRight" className="h-4 w-4" strokeWidth={2} />
@@ -67,7 +67,7 @@ export default function Hero({ hero }: { hero: Dictionary["hero"] }) {
               </div>
             </div>
           </div>
-          <div className="mt-8 rounded-2xl bg-white/5 px-6 py-4 text-center ring-1 ring-white/10 backdrop-blur">
+          <div className="glass mt-8 rounded-2xl px-6 py-4 text-center">
             <p className="text-sm text-slate-400">{hero.greeting}</p>
             <p className="mt-1 text-lg font-semibold text-white">{hero.name}</p>
             <p className="mt-1 text-sm text-slate-400">{hero.role}</p>

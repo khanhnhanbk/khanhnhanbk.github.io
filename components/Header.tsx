@@ -25,7 +25,7 @@ export default function Header({
       target="_blank"
       rel="noopener"
       onClick={close}
-      className="inline-flex min-h-11 items-center gap-2 rounded-full bg-gradient-to-r from-indigo-500 to-violet-500 px-5 text-sm font-semibold text-white shadow-lg shadow-violet-500/20 transition hover:brightness-110"
+      className="inline-flex min-h-11 items-center gap-2 glass glass-tint rounded-full px-5 text-sm font-semibold text-white active:scale-95"
     >
       <Icon name="chat" className="h-4 w-4" strokeWidth={2} />
       {header.cta}

@@ -33,7 +33,7 @@ export default function Projects({ projects }: { projects: Dictionary["projects"
             <li
               key={project.id}
               data-reveal
-              className="group flex flex-col overflow-hidden rounded-3xl bg-white/[0.03] ring-1 ring-white/10 transition hover:ring-violet-400/40"
+              className="glass group flex flex-col overflow-hidden rounded-3xl hover:border-violet-400/40"
             >
               {/* Browser-window frame around the screenshot (or a gradient placeholder). */}
               <div className="border-b border-white/10 bg-white/[0.04]">

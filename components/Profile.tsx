@@ -7,6 +7,7 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Process from "@/components/Process";
 import Projects from "@/components/Projects";
+import GlassPointer from "@/components/GlassPointer";
 import RevealObserver from "@/components/RevealObserver";
 import Services from "@/components/Services";
 import Stats from "@/components/Stats";
@@ -36,6 +37,7 @@ export default function Profile({ dict, locale }: { dict: Dictionary; locale: Lo
       <Footer footer={dict.footer} languageSwitch={dict.languageSwitch} locale={locale} />
       <FloatingZalo label={dict.footer.floatingZalo} />
       <RevealObserver />
+      <GlassPointer />
     </div>
   );
 }

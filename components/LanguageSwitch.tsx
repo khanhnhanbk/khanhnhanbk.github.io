@@ -13,7 +13,7 @@ export default function LanguageSwitch({
     <div
       role="group"
       aria-label={label}
-      className="flex items-center rounded-full border border-white/15 p-0.5 text-xs font-semibold"
+      className="glass flex items-center rounded-full p-0.5 text-xs font-semibold"
     >
       {(Object.keys(LABELS) as Locale[]).map((l) =>
         l === locale ? (

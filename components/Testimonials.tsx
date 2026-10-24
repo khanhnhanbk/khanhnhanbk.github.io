@@ -11,7 +11,7 @@ export default function Testimonials({ testimonials }: { testimonials: Dictionar
       <ul className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {testimonials.items.map((t) => (
           <li key={t.name} data-reveal>
-            <figure className="flex h-full flex-col rounded-2xl bg-white/[0.03] p-7 ring-1 ring-white/10">
+            <figure className="glass flex h-full flex-col rounded-2xl p-7">
               <Icon name="quote" className="h-8 w-8 text-violet-400" strokeWidth={2} />
               <blockquote className="mt-4 flex-1 leading-relaxed text-slate-200">{t.quote}</blockquote>
               <figcaption className="mt-6 flex items-center gap-3">

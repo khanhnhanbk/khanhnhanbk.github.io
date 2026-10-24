@@ -11,7 +11,7 @@ export default function FAQ({ faq }: { faq: Dictionary["faq"] }) {
           <details
             key={item.q}
             data-reveal
-            className="group rounded-2xl bg-white/[0.03] ring-1 ring-white/10 open:bg-white/[0.05] open:ring-violet-400/30"
+            className="glass group rounded-2xl open:bg-white/[0.06] open:border-violet-400/30"
           >
             <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 px-6 py-4 font-semibold text-white [&::-webkit-details-marker]:hidden">
               {item.q}

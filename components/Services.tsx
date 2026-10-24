@@ -11,7 +11,7 @@ export default function Services({ services }: { services: Dictionary["services"
           <li
             key={item.title}
             data-reveal
-            className="group relative overflow-hidden rounded-2xl bg-white/[0.03] p-6 ring-1 ring-white/10 transition hover:-translate-y-1 hover:bg-white/[0.06] hover:ring-violet-400/40"
+            className="glass group overflow-hidden rounded-2xl p-6 hover:-translate-y-1 hover:bg-white/[0.06] hover:border-violet-400/40"
           >
             <div
               className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-violet-500/20 opacity-0 blur-2xl transition group-hover:opacity-100"
