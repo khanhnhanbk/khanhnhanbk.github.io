@@ -10,9 +10,15 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
-        zalo: "#0068ff",
+        bg: "var(--bg)",
+        card: "var(--card)",
+        ink: "var(--ink)",
+        muted: "var(--muted)",
+        line: "var(--line)",
+        brand: "var(--brand)",
+        "brand-ink": "var(--brand-ink)",
+        soft: "var(--soft)",
+        accent: "var(--accent)",
       },
       keyframes: {
         blob: {

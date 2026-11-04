@@ -13,14 +13,14 @@ export default function LanguageSwitch({
     <div
       role="group"
       aria-label={label}
-      className="glass flex items-center rounded-full p-0.5 text-xs font-semibold"
+      className="glass flex items-center rounded-full border border-line p-0.5 text-xs font-semibold"
     >
       {(Object.keys(LABELS) as Locale[]).map((l) =>
         l === locale ? (
           <span
             key={l}
             aria-current="true"
-            className="rounded-full bg-white px-2.5 py-1.5 text-slate-900"
+            className="rounded-full bg-brand px-2.5 py-1.5 text-brand-ink"
           >
             {LABELS[l]}
           </span>
@@ -30,7 +30,7 @@ export default function LanguageSwitch({
             key={l}
             href={LOCALE_PATHS[l]}
             hrefLang={l}
-            className="rounded-full px-2.5 py-1.5 text-slate-400 hover:text-white"
+            className="rounded-full px-2.5 py-1.5 text-muted hover:text-brand"
           >
             {LABELS[l]}
           </a>

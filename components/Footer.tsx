@@ -12,8 +12,8 @@ export default function Footer({
   locale: Locale;
 }) {
   return (
-    <footer className="border-t border-white/10">
-      <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-4 pb-24 pt-8 text-sm text-slate-500 sm:flex-row sm:px-6 sm:pb-8">
+    <footer className="border-t border-line print:hidden">
+      <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-4 pb-24 pt-8 text-sm text-muted sm:flex-row sm:px-6">
         <p className="text-center sm:text-left">
           © {new Date().getFullYear()} {footer.copyright} · {footer.tagline}
         </p>
