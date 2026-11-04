@@ -26,6 +26,8 @@ export const en: Dictionary = {
     cta: "Chat on Zalo",
     openMenu: "Open menu",
     closeMenu: "Close menu",
+    toLight: "Switch to light mode",
+    toDark: "Switch to dark mode",
   },
   languageSwitch: "Switch language",
   hero: {

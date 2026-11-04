@@ -7,8 +7,8 @@ export default function Hero({ hero }: { hero: Dictionary["hero"] }) {
   return (
     <section className="relative isolate overflow-hidden">
       {/* Soft green blobs behind the hero so the glass surfaces have something to blur. */}
-      <div className="animate-blob absolute print:hidden -left-32 -top-24 -z-10 h-96 w-96 rounded-full bg-soft blur-3xl" aria-hidden="true" />
-      <div className="animate-blob absolute print:hidden -right-24 top-32 -z-10 h-80 w-80 rounded-full bg-brand opacity-15 blur-3xl [animation-delay:-6s]" aria-hidden="true" />
+      <div className="md:animate-blob absolute print:hidden -left-32 -top-24 -z-10 h-96 w-96 rounded-full bg-soft blur-3xl" aria-hidden="true" />
+      <div className="md:animate-blob absolute print:hidden -right-24 top-32 -z-10 h-80 w-80 rounded-full bg-brand opacity-15 blur-3xl [animation-delay:-6s]" aria-hidden="true" />
 
       <div className="mx-auto grid max-w-6xl items-center gap-14 px-4 pb-16 pt-12 sm:px-6 md:pt-20 lg:grid-cols-[1.25fr_1fr] lg:pb-24 print:grid-cols-[1fr_auto] print:gap-8 print:pb-6 print:pt-2">
         <div className="text-center lg:text-left print:text-left">

@@ -21,6 +21,25 @@
   color-scheme: light;
 }
 
+/* Dark tokens: follow the OS unless ThemeToggle pinned a theme (data-theme on <html>). */
+:root[data-theme="dark"] {
+  --bg: #151614;
+  --card: #1e201d;
+  --ink: #eeebe5;
+  --muted: #a59f95;
+  --line: #33352f;
+  --brand: #5cc4a6;
+  --brand-ink: #0d1a16;
+  --soft: #1f302a;
+  --accent: #f0a95e;
+  --glass-bg: rgb(30 32 29 / 0.6);
+  --glass-shine: rgb(255 255 255 / 0.1);
+  --glass-glow: rgb(92 196 166 / 0.18);
+  --glass-shadow: rgb(0 0 0 / 0.35);
+  --brand-glass: rgb(92 196 166 / 0.88);
+  color-scheme: dark;
+}
+
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --bg: #151614;
@@ -177,7 +196,7 @@ section[id] {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .animate-blob,
+  [class*="animate-blob"],
   .animate-pulse-ring,
   .animate-float {
     animation: none !important;
@@ -217,7 +236,7 @@ section[id] {
   details {
     break-inside: avoid;
   }
-  .animate-blob,
+  [class*="animate-blob"],
   .animate-float,
   .animate-pulse-ring {
     animation: none !important;
