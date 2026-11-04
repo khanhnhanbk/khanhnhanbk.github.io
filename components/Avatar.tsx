@@ -6,7 +6,7 @@ import Image from "next/image";
 const hasAvatar = fs.existsSync(path.join(process.cwd(), "public/avatar.jpg"));
 
 export default function Avatar({ alt }: { alt: string }) {
-  const className = "h-56 w-56 rounded-full sm:h-64 sm:w-64";
+  const className = "h-56 w-56 rounded-full sm:h-64 sm:w-64 print:h-40 print:w-40";
 
   if (hasAvatar) {
     return (
@@ -25,7 +25,7 @@ export default function Avatar({ alt }: { alt: string }) {
     <div
       role="img"
       aria-label={alt}
-      className={`${className} flex items-center justify-center bg-gradient-to-br from-indigo-500 to-violet-600 text-6xl font-bold text-white`}
+      className={`${className} flex items-center justify-center bg-soft text-6xl font-extrabold text-brand`}
     >
       KN
     </div>
