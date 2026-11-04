@@ -196,7 +196,7 @@ section[id] {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .animate-blob,
+  [class*="animate-blob"],
   .animate-pulse-ring,
   .animate-float {
     animation: none !important;
@@ -236,7 +236,7 @@ section[id] {
   details {
     break-inside: avoid;
   }
-  .animate-blob,
+  [class*="animate-blob"],
   .animate-float,
   .animate-pulse-ring {
     animation: none !important;
