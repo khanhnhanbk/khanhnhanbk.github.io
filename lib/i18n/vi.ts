@@ -34,6 +34,8 @@ export const vi = {
     cta: "Nhắn Zalo",
     openMenu: "Mở menu",
     closeMenu: "Đóng menu",
+    toLight: "Chuyển sang giao diện sáng",
+    toDark: "Chuyển sang giao diện tối",
   },
   languageSwitch: "Chuyển ngôn ngữ",
   hero: {

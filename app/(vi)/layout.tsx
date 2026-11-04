@@ -2,6 +2,7 @@ import "../globals.css";
 import { beVietnamPro } from "@/lib/fonts";
 import { vi } from "@/lib/i18n/vi";
 import { buildMetadata } from "@/lib/metadata";
+import { themeInitScript } from "@/components/ThemeToggle";
 
 export const metadata = buildMetadata(vi, "vi");
 
@@ -11,7 +12,10 @@ export default function ViLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="vi" className="motion-safe:scroll-smooth">
+    <html lang="vi" className="motion-safe:scroll-smooth" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
       <body className={`${beVietnamPro.className} antialiased`}>{children}</body>
     </html>
   );

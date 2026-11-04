@@ -7,6 +7,7 @@ Done:
 - `.card` (16px radius, 1px line border), `.btn` / `.btn-ghost` (pill), `.pill` tag; `.glass` retinted green, GlassPointer kept.
 - Indigo/violet gradients replaced with brand green; hero blobs now soft green.
 - Layout rules: `text-wrap: balance` on headings, `pretty` on text; section titles break after a comma; hero headline kept on one line.
+- Light/dark toggle (`components/ThemeToggle.tsx`) in the navbar: follows the OS until clicked, then pins `data-theme` on <html> and saves it in localStorage; an inline <head> script applies it before paint.
 - Print: A4, header/footer/CTAs/floating Zalo hidden, desktop grids forced, titles never split from content.
 
 Checked: `npm run lint`, `npm run build`, screenshots at 390px and 1200px (light/dark, VI/EN), print to PDF (6 pages).
