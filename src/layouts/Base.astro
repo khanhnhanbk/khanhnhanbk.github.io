@@ -1,0 +1,81 @@
+---
+// Khung chung: <head> (SEO, Open Graph, hreflang), font, nền đốm màu, script sáng/tối + vệt sáng kính.
+import '../styles/global.css';
+import lh from '../data/lien-he.json';
+const { d, locale } = Astro.props;
+const paths = { vi: '/', en: '/en/' };
+const url = new URL(paths[locale], Astro.site);
+const og = new URL('/og.jpg', Astro.site);
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: `${d.hero.name} — ${d.footer.tagline}`,
+  description: d.meta.description,
+  url: url.toString(),
+  image: new URL('/avatar.jpg', Astro.site).toString(),
+  email: lh.email,
+  telephone: lh.phone,
+  areaServed: 'VN',
+  sameAs: [lh.linkedin, lh.github, lh.facebook].filter(Boolean),
+};
+---
+<!doctype html>
+<html lang={locale}>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{d.meta.title}</title>
+  <meta name="description" content={d.meta.description} />
+  <meta name="keywords" content={d.meta.keywords.join(', ')} />
+  <link rel="canonical" href={url} />
+  <link rel="alternate" hreflang="vi" href={new URL(paths.vi, Astro.site)} />
+  <link rel="alternate" hreflang="en" href={new URL(paths.en, Astro.site)} />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={url} />
+  <meta property="og:title" content={d.meta.title} />
+  <meta property="og:description" content={d.meta.description} />
+  <meta property="og:image" content={og} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content={d.meta.ogLocale} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <noscript><style>.len{opacity:1!important;transform:none!important}</style></noscript>
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  <script is:inline>
+    try {
+      const t = localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.dataset.theme = t;
+    } catch (e) { document.documentElement.dataset.theme = 'light'; }
+  </script>
+</head>
+<body class="font-sans antialiased">
+  <div class="nen" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+  <slot />
+  <script is:inline>
+    // Nút sáng/tối
+    document.querySelectorAll('[data-doi-theme]').forEach((b) => b.addEventListener('click', () => {
+      const r = document.documentElement;
+      r.dataset.theme = r.dataset.theme === 'dark' ? 'light' : 'dark';
+      try { localStorage.setItem('theme', r.dataset.theme); } catch (e) {}
+    }));
+    // Vệt sáng chạy theo con trỏ trên thẻ kính (chỉ thiết bị có chuột)
+    if (matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      document.addEventListener('pointermove', (e) => {
+        const g = e.target.closest && e.target.closest('.glass');
+        if (!g) return;
+        const r = g.getBoundingClientRect();
+        g.style.setProperty('--mx', `${e.clientX - r.left}px`);
+        g.style.setProperty('--my', `${e.clientY - r.top}px`);
+      }, { passive: true });
+    }
+    // Hiện dần khi cuộn tới
+    const io = 'IntersectionObserver' in window && new IntersectionObserver((es) => es.forEach((x) => {
+      if (x.isIntersecting) { x.target.classList.add('hien'); io.unobserve(x.target); }
+    }), { rootMargin: '0px 0px -8% 0px' });
+    document.querySelectorAll('.len').forEach((el) => io ? io.observe(el) : el.classList.add('hien'));
+  </script>
+</body>
+</html>

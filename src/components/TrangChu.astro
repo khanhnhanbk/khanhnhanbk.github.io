@@ -1,0 +1,223 @@
+---
+// Toàn bộ trang chủ. Chữ lấy từ src/data/vi.json hoặc en.json (truyền vào qua d).
+import Icon from './Icon.astro';
+import lh from '../data/lien-he.json';
+const { d, locale } = Astro.props;
+const khac = locale === 'vi' ? { href: '/en/', nhan: 'EN' } : { href: '/', nhan: 'VI' };
+const lienHe = [
+  { icon: 'chat', nhan: d.contact.zalo, href: lh.zalo, gt: lh.phoneDisplay },
+  { icon: 'phone', nhan: d.contact.phone, href: `tel:${lh.phone}`, gt: lh.phoneDisplay },
+  { icon: 'mail', nhan: d.contact.email, href: `mailto:${lh.email}`, gt: lh.email },
+  { icon: 'linkedin', nhan: d.contact.linkedin, href: lh.linkedin, gt: 'nhan-nguyenvankhanh' },
+  { icon: 'github', nhan: d.contact.github, href: lh.github, gt: '' },
+  { icon: 'facebook', nhan: d.contact.facebook, href: lh.facebook, gt: '' },
+].filter((x) => x.href);
+// Bento dịch vụ (màn rộng 4 cột): ô 0 to 2×2, ô 1 ngang 2×1, ô 2–3 nhỏ, ô 4–5 ngang
+const bento = ['lg:col-span-2 lg:row-span-2', 'lg:col-span-2', '', '', 'lg:col-span-2', 'lg:col-span-2'];
+---
+<!-- ===== THANH ĐIỀU HƯỚNG: viên kính nổi ===== -->
+<header class="khong-in sticky top-3 z-30 px-3">
+  <nav class="glass glass-strong mx-auto flex max-w-6xl items-center gap-2 rounded-full py-2 pr-2 pl-5">
+    <a href={locale === 'vi' ? '/' : '/en/'} class="mr-auto font-extrabold tracking-tight">{d.header.logo}<span class="text-brand">.</span></a>
+    <ul class="hidden items-center gap-1 md:flex">
+      {d.header.nav.map((n) => <li><a href={n.href} class="rounded-full px-3 py-2 text-sm font-semibold text-muted hover:bg-soft hover:text-ink">{n.label}</a></li>)}
+    </ul>
+    <a href={khac.href} class="rounded-full px-3 py-2 text-sm font-bold text-muted hover:bg-soft" aria-label={d.languageSwitch}>{khac.nhan}</a>
+    <button data-doi-theme class="grid size-10 place-items-center rounded-full text-muted hover:bg-soft" aria-label={`${d.header.toLight} / ${d.header.toDark}`}>
+      <span class="dark:hidden"><Icon name="moon" /></span><span class="hidden dark:inline"><Icon name="sun" /></span>
+    </button>
+    <a href={lh.zalo} class="btn btn-brand hidden py-2.5 text-sm sm:inline-flex">{d.header.cta}</a>
+  </nav>
+</header>
+
+<main class="mx-auto max-w-6xl px-4 lg:px-6">
+  <!-- ===== HERO ===== -->
+  <section class="grid items-center gap-8 pt-14 pb-10 lg:grid-cols-[1.25fr_1fr] lg:gap-12 lg:pt-24 lg:pb-16">
+    <div class="len">
+      <span class="chip"><span class="size-2 animate-pulse rounded-full bg-brand"></span>{d.hero.badge}</span>
+      <h1 class="mt-5 text-4xl leading-[1.08] font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
+        {d.hero.headline}<br /><span class="chu-gradient">{d.hero.highlight}</span>
+      </h1>
+      <p class="mt-5 max-w-xl text-lg text-muted">{d.hero.pitch}</p>
+      <div class="mt-7 flex flex-wrap items-center gap-3">
+        <a href={lh.zalo} class="btn btn-brand">{d.hero.ctaPrimary}<Icon name="arrowRight" class="size-4" /></a>
+        <a href="#projects" class="btn glass px-5 py-3">{d.hero.ctaSecondary}</a>
+      </div>
+      <ul class="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-sm font-semibold text-muted">
+        {d.hero.checks.map((c) => <li class="flex items-center gap-1.5"><Icon name="check" class="size-4 text-brand" stroke={2.4} />{c}</li>)}
+      </ul>
+    </div>
+
+    <!-- Thẻ hồ sơ bằng kính -->
+    <aside class="glass len p-6 sm:p-7">
+      <div class="flex items-center gap-4">
+        <picture>
+          <source srcset="/avatar.webp" type="image/webp" />
+          <img src="/avatar.jpg" alt={d.hero.avatarAlt} width="96" height="96" class="size-20 rounded-2xl object-cover ring-4 ring-white/60 sm:size-24" />
+        </picture>
+        <div>
+          <p class="text-sm text-muted">{d.hero.greeting}</p>
+          <p class="text-xl font-extrabold leading-tight">{d.hero.name}</p>
+          <p class="mt-1 text-sm text-muted">{d.hero.role}</p>
+        </div>
+      </div>
+      <p class="mt-5 flex items-center gap-2 rounded-2xl bg-soft px-4 py-3 text-sm font-semibold text-brand">
+        <Icon name="bolt" class="size-4" />{d.hero.nowAt}
+      </p>
+      <div class="mt-4 grid grid-cols-3 gap-2">
+        {d.stats.items.map((s) => (
+          <div class="rounded-2xl border border-line p-3 text-center">
+            <b class="block text-xl">{s.value}</b>
+            <span class="text-xs leading-snug text-muted">{s.label}</span>
+          </div>
+        ))}
+      </div>
+    </aside>
+  </section>
+
+  <!-- ===== DỊCH VỤ: bento ===== -->
+  <section id="services" class="py-12 lg:py-16">
+    <p class="chip len">{d.services.eyebrow}</p>
+    <h2 class="len mt-3 text-3xl font-extrabold tracking-tight lg:text-4xl">{d.services.title}</h2>
+    <p class="len mt-3 max-w-2xl text-muted">{d.services.subtitle}</p>
+    <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:auto-rows-fr">
+      {d.services.items.map((s, i) => (
+        <article class={`glass len flex flex-col p-6 ${bento[i] ?? ''} ${i === 0 ? 'sm:col-span-2' : ''}`}>
+          <span class={`grid place-items-center rounded-2xl ${i === 0 ? 'size-14 bg-gradient-to-br from-brand to-brand-2 text-brand-ink' : 'size-11 bg-soft text-brand'}`}>
+            <Icon name={s.icon} class={i === 0 ? 'size-7' : 'size-5'} />
+          </span>
+          <h3 class={`mt-4 font-bold ${i === 0 ? 'text-2xl lg:text-3xl' : 'text-lg'}`}>{s.title}</h3>
+          <p class={`mt-2 text-muted ${i === 0 ? 'text-lg' : 'text-sm'}`}>{s.description}</p>
+          {i === 0 && <a href={lh.zalo} class="btn btn-brand mt-auto self-start pt-3">{d.hero.ctaPrimary}</a>}
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- ===== DỰ ÁN ===== -->
+  <section id="projects" class="py-12 lg:py-16">
+    <p class="chip len">{d.projects.eyebrow}</p>
+    <h2 class="len mt-3 text-3xl font-extrabold tracking-tight lg:text-4xl">{d.projects.title}</h2>
+    <div class="mt-8 grid gap-4 md:grid-cols-2">
+      {d.projects.items.map((p, i) => {
+        const link = d.projects.links[p.id];
+        return (
+          <article class={`glass len flex flex-col p-6 lg:p-7 ${i === 0 ? 'md:col-span-2' : ''}`}>
+            <div class="flex items-start justify-between gap-3">
+              <h3 class={`font-extrabold ${i === 0 ? 'text-2xl lg:text-3xl' : 'text-xl'}`}>{p.title}</h3>
+              {link && <a href={link} target="_blank" rel="noopener" class="chip shrink-0 hover:brightness-95">{d.projects.viewLive}<Icon name="external" class="size-3.5" /></a>}
+            </div>
+            <dl class={`mt-4 grid gap-3 text-sm ${i === 0 ? 'lg:grid-cols-3' : ''}`}>
+              <div><dt class="font-bold text-ink">{d.projects.problemLabel}</dt><dd class="text-muted">{p.problem}</dd></div>
+              <div><dt class="font-bold text-ink">{d.projects.solutionLabel}</dt><dd class="text-muted">{p.solution}</dd></div>
+              <div><dt class="font-bold text-ink">{d.projects.resultLabel}</dt><dd class="text-muted">{p.result}</dd></div>
+            </dl>
+            <ul class="mt-auto flex flex-wrap gap-1.5 pt-5">{p.tags.map((t) => <li class="rounded-full border border-line px-2.5 py-0.5 text-xs font-semibold text-muted">{t}</li>)}</ul>
+          </article>
+        );
+      })}
+    </div>
+  </section>
+
+  <!-- ===== ĐÁNH GIÁ (ẩn khi chưa có) ===== -->
+  {d.testimonials.items.length > 0 && (
+    <section class="py-12 lg:py-16">
+      <p class="chip len">{d.testimonials.eyebrow}</p>
+      <h2 class="len mt-3 text-3xl font-extrabold tracking-tight lg:text-4xl">{d.testimonials.title}</h2>
+      <div class="mt-8 grid gap-4 md:grid-cols-2">
+        {d.testimonials.items.map((t) => (
+          <figure class="glass len p-6"><Icon name="quote" class="size-6 text-brand" /><blockquote class="mt-2 text-lg">{t.quote}</blockquote><figcaption class="mt-3 text-sm font-bold">{t.name} <span class="font-normal text-muted">· {t.role}</span></figcaption></figure>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <!-- ===== QUY TRÌNH ===== -->
+  <section class="py-12 lg:py-16">
+    <p class="chip len">{d.process.eyebrow}</p>
+    <h2 class="len mt-3 text-3xl font-extrabold tracking-tight lg:text-4xl">{d.process.title}</h2>
+    <ol class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {d.process.steps.map((s, i) => (
+        <li class="glass len p-6">
+          <span class="text-5xl font-extrabold leading-none text-brand/25">{String(i + 1).padStart(2, '0')}</span>
+          <h3 class="mt-3 text-lg font-bold">{s.title}</h3>
+          <p class="mt-1 text-sm text-muted">{s.description}</p>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <!-- ===== VỀ TÔI ===== -->
+  <section id="about" class="py-12 lg:py-16">
+    <p class="chip len">{d.aboutMe.eyebrow}</p>
+    <h2 class="len mt-3 text-3xl font-extrabold tracking-tight lg:text-4xl">{d.aboutMe.title}</h2>
+    <p class="len mt-3 max-w-3xl text-lg text-muted">{d.aboutMe.intro}</p>
+    <div class="mt-8 grid gap-4 lg:grid-cols-[1.3fr_1fr]">
+      <div class="glass len p-6 lg:p-7">
+        <h3 class="text-lg font-bold">{d.aboutMe.experienceTitle}</h3>
+        <ol class="mt-4 space-y-5 border-l-2 border-brand/25 pl-5">
+          {d.aboutMe.experience.map((e, i) => (
+            <li class="relative">
+              <span class={`absolute top-1.5 -left-[27px] size-3 rounded-full ring-4 ring-bg ${i === 0 ? 'bg-brand' : 'bg-brand/40'}`}></span>
+              <p class="text-xs font-bold tracking-wide text-muted uppercase">{e.dates}{i === 0 && <span class="chip ml-2 py-0 normal-case">{d.aboutMe.currentLabel}</span>}</p>
+              <p class="mt-0.5 font-bold">{e.company} <span class="font-semibold text-muted">· {e.role}</span></p>
+              <p class="text-sm text-muted">{e.summary}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+      <div class="grid gap-4">
+        <div class="glass len p-6 lg:p-7">
+          <h3 class="text-lg font-bold">{d.aboutMe.educationTitle}</h3>
+          <ul class="mt-3 space-y-2 text-sm">{d.aboutMe.education.map((x) => <li class="flex gap-2"><Icon name="check" class="mt-0.5 size-4 shrink-0 text-brand" stroke={2.4} />{x}</li>)}</ul>
+        </div>
+        <div class="glass len p-6 lg:p-7">
+          <h3 class="text-lg font-bold">{d.aboutMe.skillsTitle}</h3>
+          <ul class="mt-3 flex flex-wrap gap-1.5">{d.aboutMe.skills.map((s) => <li class="chip">{s}</li>)}</ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== HỎI ĐÁP ===== -->
+  <section id="faq" class="py-12 lg:py-16">
+    <p class="chip len">{d.faq.eyebrow}</p>
+    <h2 class="len mt-3 text-3xl font-extrabold tracking-tight lg:text-4xl">{d.faq.title}</h2>
+    <div class="mt-8 grid items-start gap-3 lg:grid-cols-2">
+      {d.faq.items.map((q) => (
+        <details class="glass len group p-5">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-3 font-bold">{q.q}<span class="grid size-7 shrink-0 place-items-center rounded-full bg-soft text-brand transition group-open:rotate-45">+</span></summary>
+          <p class="mt-3 text-muted">{q.a}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <!-- ===== LIÊN HỆ ===== -->
+  <section id="contact" class="py-12 lg:py-16">
+    <div class="glass len p-7 sm:p-10 lg:p-14">
+      <div class="grid items-center gap-8 lg:grid-cols-[1.2fr_1fr]">
+        <div>
+          <h2 class="text-3xl font-extrabold tracking-tight lg:text-5xl"><span class="chu-gradient">{d.contact.title}</span></h2>
+          <p class="mt-4 text-lg text-muted">{d.contact.subtitle}</p>
+          <a href={lh.zalo} class="btn btn-brand mt-6 text-lg">{d.contact.cta}<Icon name="arrowRight" class="size-5" /></a>
+        </div>
+        <ul class="grid gap-2">
+          {lienHe.map((x) => (
+            <li><a href={x.href} class="flex items-center gap-3 rounded-2xl border border-line px-4 py-3 hover:bg-soft">
+              <span class="grid size-10 place-items-center rounded-xl bg-soft text-brand"><Icon name={x.icon} /></span>
+              <span><b class="block text-sm">{x.nhan}</b>{x.gt && <span class="text-sm text-muted">{x.gt}</span>}</span>
+            </a></li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="mx-auto max-w-6xl px-4 pt-4 pb-24 text-center text-sm text-muted sm:pb-10">
+  © {new Date().getFullYear()} {d.footer.copyright} · {d.footer.tagline}
+</footer>
+
+<!-- Nút Zalo nổi (điện thoại) -->
+<a href={lh.zalo} class="khong-in btn btn-brand fixed right-4 bottom-4 z-30 sm:hidden"><Icon name="chat" />{d.footer.floatingZalo}</a>
