@@ -1,0 +1,128 @@
+/* ===== THEME portfolio: màu, font, kính mờ. Sửa giao diện chủ yếu ở file này. ===== */
+@import "tailwindcss";
+
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+:root {
+  --c-bg: #f6f4ee;
+  --c-ink: #17201c;
+  --c-muted: #56635d;
+  --c-line: rgb(23 32 28 / 0.1);
+  --c-brand: #1f6f5c;
+  --c-brand-2: #2fa37f;
+  --c-brand-ink: #ffffff;
+  --c-accent: #f2c14e;
+  --c-soft: #e2efe9;
+  /* Kính mờ */
+  --g-bg: rgb(255 255 255 / 0.52);
+  --g-bg-strong: rgb(255 255 255 / 0.7);
+  --g-edge: rgb(255 255 255 / 0.75);
+  --g-sheen: rgb(255 255 255 / 0.65);
+  --g-shadow: 0 1px 0 rgb(255 255 255 / 0.8) inset, 0 18px 40px -18px rgb(20 60 48 / 0.28);
+  --g-spot: rgb(255 255 255 / 0.55);
+  /* Đốm màu nền phía sau lớp kính */
+  --b1: #47c79d; --b2: #f2c14e; --b3: #7fb8ff; --b4: #f59e8b;
+  --blob-opacity: 0.55;
+}
+[data-theme="dark"] {
+  --c-bg: #0b1210;
+  --c-ink: #e8efeb;
+  --c-muted: #9cb0a7;
+  --c-line: rgb(255 255 255 / 0.09);
+  --c-brand: #5cc3a6;
+  --c-brand-2: #8de0c4;
+  --c-brand-ink: #08130f;
+  --c-soft: rgb(92 195 166 / 0.14);
+  --g-bg: rgb(20 30 26 / 0.45);
+  --g-bg-strong: rgb(20 30 26 / 0.7);
+  --g-edge: rgb(255 255 255 / 0.12);
+  --g-sheen: rgb(255 255 255 / 0.08);
+  --g-shadow: 0 1px 0 rgb(255 255 255 / 0.06) inset, 0 24px 50px -20px rgb(0 0 0 / 0.6);
+  --g-spot: rgb(141 224 196 / 0.16);
+  --b1: #1f8f6c; --b2: #a8822a; --b3: #2f5fa8; --b4: #8f3f5c;
+  --blob-opacity: 0.5;
+}
+
+@theme inline {
+  --color-bg: var(--c-bg);
+  --color-ink: var(--c-ink);
+  --color-muted: var(--c-muted);
+  --color-line: var(--c-line);
+  --color-brand: var(--c-brand);
+  --color-brand-2: var(--c-brand-2);
+  --color-brand-ink: var(--c-brand-ink);
+  --color-accent: var(--c-accent);
+  --color-soft: var(--c-soft);
+  --font-sans: "Be Vietnam Pro", system-ui, sans-serif;
+}
+
+html { background: var(--c-bg); color: var(--c-ink); scroll-behavior: smooth; scroll-padding-top: 6rem; }
+h1, h2, h3 { text-wrap: balance; }
+p { text-wrap: pretty; }
+@media (min-width: 1800px) { html { font-size: 112.5%; } }
+@media (min-width: 2400px) { html { font-size: 125%; } }
+
+/* ===== Nền: các đốm màu mờ trôi chậm, nằm cố định phía sau ===== */
+.nen { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+.nen span { position: absolute; border-radius: 50%; filter: blur(70px); opacity: var(--blob-opacity); animation: troi 26s ease-in-out infinite alternate; }
+.nen span:nth-child(1) { width: 46vmax; height: 46vmax; background: var(--b1); top: -14vmax; left: -10vmax; }
+.nen span:nth-child(2) { width: 34vmax; height: 34vmax; background: var(--b2); top: 18vh; right: -12vmax; animation-duration: 32s; }
+.nen span:nth-child(3) { width: 38vmax; height: 38vmax; background: var(--b3); bottom: -16vmax; left: 22vw; animation-duration: 38s; }
+.nen span:nth-child(4) { width: 22vmax; height: 22vmax; background: var(--b4); top: 55vh; left: -6vmax; animation-duration: 30s; }
+@keyframes troi { to { transform: translate(6vmax, 4vmax) scale(1.08); } }
+@media (prefers-reduced-motion: reduce) { .nen span { animation: none; } }
+
+/* ===== Kính mờ =====
+   Lớp nền trong suốt + làm mờ phía sau + viền sáng + vệt bóng phía trên.
+   --mx/--my do script đặt theo con trỏ: tạo vệt sáng chạy theo chuột (chỉ máy tính). */
+@layer components {
+  .glass {
+    position: relative;
+    isolation: isolate;
+    background: var(--g-bg);
+    border: 1px solid var(--g-edge);
+    box-shadow: var(--g-shadow);
+    backdrop-filter: blur(22px) saturate(170%);
+    -webkit-backdrop-filter: blur(22px) saturate(170%);
+    border-radius: 1.5rem;
+    overflow: hidden;
+  }
+  .glass::before {
+    content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+    background: linear-gradient(160deg, var(--g-sheen), transparent 42%);
+  }
+  .glass::after {
+    content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: 0;
+    background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 0%), var(--g-spot), transparent 60%);
+    transition: opacity .3s;
+  }
+  .glass:hover::after { opacity: 1; }
+  .glass-strong { background: var(--g-bg-strong); }
+
+  .btn { display: inline-flex; align-items: center; gap: .5rem; border-radius: 999px; padding: .8rem 1.4rem; font-weight: 700; transition: transform .15s, box-shadow .15s; }
+  .btn:hover { transform: translateY(-1px); }
+  .btn-brand { background: linear-gradient(135deg, var(--c-brand), var(--c-brand-2)); color: var(--c-brand-ink); box-shadow: 0 10px 24px -10px var(--c-brand); }
+  .chip { display: inline-flex; align-items: center; gap: .35rem; border-radius: 999px; padding: .25rem .75rem; font-size: .8rem; font-weight: 600; background: var(--c-soft); color: var(--c-brand); }
+  .chu-gradient { background: linear-gradient(120deg, var(--c-brand), var(--c-brand-2) 45%, #c99a2e); -webkit-background-clip: text; background-clip: text; color: transparent; }
+}
+
+/* Trình duyệt không hỗ trợ làm mờ: dùng nền đặc hơn để chữ vẫn đọc được */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .glass { background: var(--g-bg-strong); }
+}
+
+/* ===== In ra giấy A4 ===== */
+@media print {
+  @page { size: A4; margin: 12mm; }
+  html { font-size: 12px; background: #fff; }
+  .nen, .khong-in { display: none !important; }
+  .glass { backdrop-filter: none; -webkit-backdrop-filter: none; background: #fff; box-shadow: none; border-color: #ddd; }
+  section, .glass { break-inside: avoid; }
+}
+
+/* ===== Hiện dần khi cuộn tới (class .len, script thêm .hien) ===== */
+@media (prefers-reduced-motion: no-preference) {
+  .len { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+  .len.hien { opacity: 1; transform: none; }
+}
+@media print { .len { opacity: 1 !important; transform: none !important; } }
