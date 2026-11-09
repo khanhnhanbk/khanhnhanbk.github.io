@@ -126,3 +126,46 @@ p { text-wrap: pretty; }
   .len.hien { opacity: 1; transform: none; }
 }
 @media print { .len { opacity: 1 !important; transform: none !important; } }
+
+/* ===== Icon động (CSS thuần, không JS) =====
+   Máy có chuột: chạy khi rê vào nút/thẻ chứa icon.
+   Điện thoại: chạy một lần khi thẻ cuộn tới (.len → .hien).
+   Máy bật giảm chuyển động: không chạy. */
+.ic { transform-box: fill-box; transform-origin: center; }
+@keyframes ic-nhich { 50% { transform: translateX(4px); } }
+@keyframes ic-cheo { 50% { transform: translate(2px, -2px); } }
+@keyframes ic-ve { from { stroke-dasharray: 1; stroke-dashoffset: 1; } to { stroke-dasharray: 1; stroke-dashoffset: 0; } }
+@keyframes ic-lac { 20% { transform: rotate(-14deg); } 40% { transform: rotate(12deg); } 60% { transform: rotate(-8deg); } 80% { transform: rotate(4deg); } }
+@keyframes ic-rung { 10%, 50%, 90% { transform: rotate(-12deg); } 30%, 70% { transform: rotate(12deg); } 100% { transform: none; } }
+@keyframes ic-nay { 40% { transform: translateY(-4px); } 70% { transform: translateY(1px); } }
+@keyframes ic-nhay { 30% { transform: scale(1.18); } 60% { transform: scale(.94); } }
+@keyframes ic-chop { 20%, 60% { opacity: .25; } 40%, 80% { opacity: 1; } }
+@keyframes ic-quay { to { transform: rotate(180deg); } }
+@keyframes ic-soi { 25% { transform: translate(2px, -2px); } 50% { transform: translate(-2px, -1px); } 75% { transform: translate(1px, 2px); } }
+@keyframes ic-xe { 30% { transform: translateX(-3px); } 70% { transform: translateX(4px); } }
+
+@media (prefers-reduced-motion: no-preference) {
+  :root { --ic-t: .7s cubic-bezier(.4, 0, .2, 1); }
+  @media (hover: hover) {
+    :is(a, button, .glass, li):hover > .ic-arrowRight, :is(a, button):hover .ic-arrowRight { animation: ic-nhich var(--ic-t); }
+    :is(a, button):hover .ic-external { animation: ic-cheo var(--ic-t); }
+    :is(li, .glass):hover .ic-check :is(path), :is(a, li):hover .ic-mail :is(path, rect) { animation: ic-ve .6s ease-out; }
+    :is(a, .glass):hover .ic-globe, :is(a, .glass):hover .ic-wrench, :is(button):hover .ic-moon { animation: ic-lac .8s ease-in-out; }
+    :is(a, .glass, li):hover .ic-phone, :is(a, button):hover .ic-chat { animation: ic-rung .6s ease-in-out; }
+    :is(a, li):hover :is(.ic-linkedin, .ic-github, .ic-facebook) { animation: ic-nay var(--ic-t); }
+    :is(.glass, a, figure):hover :is(.ic-dashboard, .ic-quote) { animation: ic-nhay var(--ic-t); }
+    :is(.glass, a, div):hover > .ic-bolt, .glass:hover .ic-bolt { animation: ic-chop .8s linear; }
+    :is(button):hover .ic-sun { animation: ic-quay .8s ease-in-out; }
+    :is(.glass, a):hover .ic-search { animation: ic-soi .8s ease-in-out; }
+    :is(.glass, a):hover .ic-cart { animation: ic-xe var(--ic-t); }
+  }
+  @media (hover: none) {
+    .hien :is(.ic-globe, .ic-wrench) { animation: ic-lac .8s ease-in-out .3s; }
+    .hien :is(.ic-dashboard, .ic-quote) { animation: ic-nhay .7s .3s; }
+    .hien .ic-bolt { animation: ic-chop .8s linear .3s; }
+    .hien .ic-search { animation: ic-soi .8s ease-in-out .3s; }
+    .hien .ic-cart { animation: ic-xe .7s .3s; }
+    .hien .ic-check :is(path) { animation: ic-ve .6s ease-out .3s backwards; }
+    .hien .ic-phone { animation: ic-rung .6s ease-in-out .3s; }
+  }
+}

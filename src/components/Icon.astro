@@ -22,5 +22,7 @@ const PATHS: Record<string, string> = {
   moon: '<path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>',
 };
 const { name, class: cls = 'size-5', stroke = 1.8 } = Astro.props;
+// pathLength=1 để CSS vẽ nét (stroke-dashoffset 1 → 0) mà không cần đo độ dài từng path.
+const html = (PATHS[name] ?? '').replace(/<(path|circle|rect)\b/g, '<$1 pathLength="1"');
 ---
-<svg viewBox="0 0 24 24" class={cls} fill="none" stroke="currentColor" stroke-width={stroke} stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={PATHS[name] ?? ''} />
+<svg viewBox="0 0 24 24" class:list={['ic', `ic-${name}`, cls]} fill="none" stroke="currentColor" stroke-width={stroke} stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={html} />
