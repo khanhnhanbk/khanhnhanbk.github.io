@@ -156,7 +156,8 @@ p { text-wrap: pretty; }
     :is(a, .glass, li):hover .ic-phone, :is(a, button):hover .ic-chat { animation: ic-rung .6s ease-in-out; }
     :is(a, li):hover :is(.ic-linkedin, .ic-github, .ic-facebook) { animation: ic-nay var(--ic-t); }
     :is(.glass, a, figure):hover :is(.ic-dashboard, .ic-quote) { animation: ic-nhay var(--ic-t); }
-    :is(.glass, a, div):hover > .ic-bolt, .glass:hover .ic-bolt { animation: ic-chop .8s linear; }
+    /* Sấm sét ở thẻ hero: chỉ nháy khi chuột vào đúng icon; thẻ dịch vụ vẫn nháy theo thẻ như các icon khác. */
+    .ic-bolt:hover, article.glass:hover .ic-bolt { animation: ic-chop .8s linear; }
     :is(button):hover .ic-sun { animation: ic-quay .8s ease-in-out; }
     :is(.glass, a):hover .ic-search { animation: ic-soi .8s ease-in-out; }
     :is(.glass, a):hover .ic-cart { animation: ic-xe var(--ic-t); }
