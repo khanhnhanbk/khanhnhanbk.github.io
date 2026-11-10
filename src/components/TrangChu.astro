@@ -26,7 +26,7 @@ const bento = ['lg:col-span-2 lg:row-span-2', 'lg:col-span-2', '', '', 'lg:col-s
     <button data-doi-theme class="grid size-10 place-items-center rounded-full text-muted hover:bg-soft" aria-label={`${d.header.toLight} / ${d.header.toDark}`}>
       <span class="dark:hidden"><Icon name="moon" /></span><span class="hidden dark:inline"><Icon name="sun" /></span>
     </button>
-    <a href={lh.zalo} class="btn btn-brand hidden py-2.5 text-sm sm:inline-flex">{d.header.cta}</a>
+    <a href={lh.zalo} target="_blank" rel="noopener" class="btn btn-brand hidden py-2.5 text-sm sm:inline-flex">{d.header.cta}</a>
   </nav>
 </header>
 
@@ -40,7 +40,7 @@ const bento = ['lg:col-span-2 lg:row-span-2', 'lg:col-span-2', '', '', 'lg:col-s
       </h1>
       <p class="mt-5 max-w-xl text-lg text-muted">{d.hero.pitch}</p>
       <div class="mt-7 flex flex-wrap items-center gap-3">
-        <a href={lh.zalo} class="btn btn-brand">{d.hero.ctaPrimary}<Icon name="arrowRight" class="size-4" /></a>
+        <a href={lh.zalo} target="_blank" rel="noopener" class="btn btn-brand">{d.hero.ctaPrimary}<Icon name="arrowRight" class="size-4" /></a>
         <a href="#projects" class="btn glass px-5 py-3">{d.hero.ctaSecondary}</a>
       </div>
       <ul class="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-sm font-semibold text-muted">
@@ -88,7 +88,7 @@ const bento = ['lg:col-span-2 lg:row-span-2', 'lg:col-span-2', '', '', 'lg:col-s
           </span>
           <h3 class={`mt-4 font-bold ${i === 0 ? 'text-2xl lg:text-3xl' : 'text-lg'}`}>{s.title}</h3>
           <p class={`mt-2 text-muted ${i === 0 ? 'text-lg' : 'text-sm'}`}>{s.description}</p>
-          {i === 0 && <a href={lh.zalo} class="btn btn-brand mt-auto self-start pt-3">{d.hero.ctaPrimary}</a>}
+          {i === 0 && <a href={lh.zalo} target="_blank" rel="noopener" class="btn btn-brand mt-auto self-start pt-3">{d.hero.ctaPrimary}</a>}
         </article>
       ))}
     </div>
@@ -200,11 +200,11 @@ const bento = ['lg:col-span-2 lg:row-span-2', 'lg:col-span-2', '', '', 'lg:col-s
         <div>
           <h2 class="text-3xl font-extrabold tracking-tight lg:text-5xl"><span class="chu-gradient">{d.contact.title}</span></h2>
           <p class="mt-4 text-lg text-muted">{d.contact.subtitle}</p>
-          <a href={lh.zalo} class="btn btn-brand mt-6 text-lg">{d.contact.cta}<Icon name="arrowRight" class="size-5" /></a>
+          <a href={lh.zalo} target="_blank" rel="noopener" class="btn btn-brand mt-6 text-lg">{d.contact.cta}<Icon name="arrowRight" class="size-5" /></a>
         </div>
         <ul class="grid gap-2">
           {lienHe.map((x) => (
-            <li><a href={x.href} class="flex items-center gap-3 rounded-2xl border border-line px-4 py-3 hover:bg-soft">
+            <li><a href={x.href} {...(x.href.startsWith("http") ? { target: "_blank", rel: "noopener" } : {})} class="flex items-center gap-3 rounded-2xl border border-line px-4 py-3 hover:bg-soft">
               <span class="grid size-10 place-items-center rounded-xl bg-soft text-brand"><Icon name={x.icon} /></span>
               <span><b class="block text-sm">{x.nhan}</b>{x.gt && <span class="text-sm text-muted">{x.gt}</span>}</span>
             </a></li>
@@ -220,4 +220,4 @@ const bento = ['lg:col-span-2 lg:row-span-2', 'lg:col-span-2', '', '', 'lg:col-s
 </footer>
 
 <!-- Nút Zalo nổi (điện thoại) -->
-<a href={lh.zalo} class="khong-in btn btn-brand fixed right-4 bottom-4 z-30 sm:hidden"><Icon name="chat" />{d.footer.floatingZalo}</a>
+<a href={lh.zalo} target="_blank" rel="noopener" class="khong-in btn btn-brand fixed right-4 bottom-4 z-30 sm:hidden"><Icon name="chat" />{d.footer.floatingZalo}</a>
