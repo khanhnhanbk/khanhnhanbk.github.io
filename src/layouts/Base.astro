@@ -5,7 +5,8 @@ import lh from '../data/lien-he.json';
 const { d, locale } = Astro.props;
 const paths = { vi: '/', en: '/en/' };
 const url = new URL(paths[locale], Astro.site);
-const og = new URL('/og.jpg', Astro.site);
+// ?v= đổi mỗi khi vẽ lại og.jpg để Facebook/Zalo lấy ảnh mới thay vì ảnh cũ trong cache.
+const og = new URL('/og.jpg?v=2', Astro.site);
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'ProfessionalService',
@@ -38,6 +39,8 @@ const jsonLd = {
   <meta property="og:image" content={og} />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:alt" content={d.meta.title} />
   <meta property="og:locale" content={d.meta.ogLocale} />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
