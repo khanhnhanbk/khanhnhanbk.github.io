@@ -172,3 +172,57 @@ p { text-wrap: pretty; }
     .hien .ic-phone { animation: ic-rung .6s ease-in-out .3s; }
   }
 }
+
+/* ===== Dây tín hiệu phía sau hero (học từ agento-ai.com) =====
+   7 đường cong mảnh: một lớp nền rất mờ đứng yên + một đoạn sáng chạy dọc mỗi đường.
+   pathLength="1000" nên dasharray tính theo phần nghìn của đường, đường dài ngắn đều chạy như nhau.
+   Khối tràn hết bề ngang màn hình; body clip trục ngang để không sinh thanh cuộn ngang. */
+body { overflow-x: clip; }
+.day-tin {
+  position: absolute; top: 0; bottom: 0; left: 50%; width: 100vw; translate: -50% 0;
+  z-index: -1; pointer-events: none; overflow: hidden;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 15%, #000 80%, transparent);
+  mask-image: linear-gradient(to bottom, transparent, #000 15%, #000 80%, transparent);
+}
+.day-tin svg { width: 100%; height: 100%; display: block; }
+.day-tin use { fill: none; stroke: var(--c-brand); stroke-width: 1.25; vector-effect: non-scaling-stroke; stroke-linecap: round; }
+.day-tin-nen { opacity: .12; }
+.day-tin-xung { opacity: .45; }
+.day-tin-xung use { stroke-dasharray: 140 860; stroke-dashoffset: 1000; animation: day-chay 14s linear infinite; }
+.day-tin-xung use:nth-child(2) { animation-duration: 18s; animation-delay: -5s; }
+.day-tin-xung use:nth-child(3) { animation-duration: 11s; animation-delay: -2s; stroke-width: 1.5; }
+.day-tin-xung use:nth-child(4) { animation-duration: 20s; animation-delay: -12s; }
+.day-tin-xung use:nth-child(5) { animation-duration: 9s; animation-delay: -4s; }
+.day-tin-xung use:nth-child(6) { animation-duration: 16s; animation-delay: -9s; stroke-width: 1; }
+.day-tin-xung use:nth-child(7) { animation-duration: 12s; animation-delay: -7s; stroke-width: 1; }
+@keyframes day-chay { to { stroke-dashoffset: 0; } }
+[data-theme="dark"] .day-tin-nen { opacity: .16; }
+[data-theme="dark"] .day-tin-xung { opacity: .55; }
+/* Điện thoại: bớt 3 đường và nhạt hơn để chữ hero dễ đọc */
+@media (max-width: 639px) {
+  /* Hero điện thoại cao và hẹp: kéo SVG rộng gấp 3 rồi cắt hai bên, để đường cong thoai thoải thay vì dựng đứng */
+  .day-tin svg { width: 300%; margin-left: -100%; }
+  .day-tin use:nth-child(n+5) { display: none; }
+  .day-tin-nen { opacity: .08; }
+  .day-tin-xung { opacity: .32; }
+}
+@media (prefers-reduced-motion: reduce) { .day-tin-xung use { animation: none; } }
+@media print { .day-tin { display: none; } }
+
+/* ===== Thẻ dịch vụ: hover kiểu agento =====
+   Bình thường giữ kính mờ như cũ. Rê chuột: nền ngả màu chính rất nhạt, viền màu chính mờ, bóng mềm, nhích 2px.
+   Nhích bằng thuộc tính `translate` (không phải transform) để không đụng hiệu ứng hiện dần của .len. */
+.vong-icon { transition: background-color .2s ease; }
+@media (hover: hover) {
+  .the-dv:hover {
+    background: color-mix(in srgb, var(--c-brand) 7%, var(--g-bg-strong));
+    border-color: color-mix(in srgb, var(--c-brand) 28%, transparent);
+    box-shadow: var(--g-shadow), 0 22px 44px -22px color-mix(in srgb, var(--c-brand) 55%, transparent);
+  }
+  .the-dv:hover .vong-icon:not(.from-brand) { background: color-mix(in srgb, var(--c-brand) 18%, transparent); }
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .the-dv { transition: opacity .6s ease, transform .6s ease, translate .2s ease, background-color .2s ease, border-color .2s ease, box-shadow .2s ease; }
+  .the-dv:hover { translate: 0 -2px; }
+}
+@media (prefers-reduced-motion: reduce) { .vong-icon { transition: none; } }
