@@ -247,6 +247,26 @@
       {
         "q": "Do I own the website?",
         "a": "Yes. You own all the source code, the domain and the data."
+      },
+      {
+        "q": "Roughly how much does a website cost?",
+        "a": "It depends on scope. For example, a personal page for a student (tutoring, internship applications) is 500,000 to 1,000,000 VND. For landing pages, websites or software I send a written quote after hearing your needs; advice and quotes are free."
+      },
+      {
+        "q": "You have a full-time job. Can you keep to the schedule?",
+        "a": "By day I'm a Python developer at Akselos; I do outside projects in the evenings and at weekends. So I only take a few projects at a time and put the delivery date in the quote."
+      },
+      {
+        "q": "Do you build custom features, or only use templates?",
+        "a": "Both. Templates are faster and cheaper; if you need something specific like bookings, order management or a Google Sheet connection, I build it to order."
+      },
+      {
+        "q": "Do I have to sign a long-term contract?",
+        "a": "No. Each job has its own quote. Monthly maintenance only if you want it."
+      },
+      {
+        "q": "I'm in another city. Can we still work together?",
+        "a": "Yes. Everything happens over Zalo, with a video call when needed. I'm based in Ho Chi Minh City but work with clients anywhere."
       }
     ]
   },

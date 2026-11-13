@@ -248,6 +248,26 @@
       {
         "q": "Website có thuộc về tôi không?",
         "a": "Có. Bạn sở hữu toàn bộ mã nguồn, tên miền và dữ liệu."
+      },
+      {
+        "q": "Làm web hết khoảng bao nhiêu tiền?",
+        "a": "Tùy phạm vi. Ví dụ trang cá nhân cho sinh viên đi gia sư, xin thực tập từ 500.000đ đến 1.000.000đ. Landing page, website hay phần mềm thì tôi báo giá cụ thể bằng văn bản sau khi nghe bạn kể nhu cầu; tư vấn và báo giá không mất phí."
+      },
+      {
+        "q": "Bạn đang đi làm toàn thời gian, có kịp tiến độ không?",
+        "a": "Ban ngày tôi là Python developer tại Akselos, dự án bên ngoài tôi làm vào buổi tối và cuối tuần. Vì vậy tôi chỉ nhận ít dự án cùng lúc và ghi rõ ngày bàn giao trong báo giá."
+      },
+      {
+        "q": "Có làm theo yêu cầu riêng không, hay chỉ dùng mẫu có sẵn?",
+        "a": "Cả hai. Dùng mẫu có sẵn thì nhanh và rẻ hơn; cần chức năng riêng như đặt lịch, quản lý đơn, kết nối Google Sheet thì tôi làm theo yêu cầu."
+      },
+      {
+        "q": "Có phải ký hợp đồng dài hạn không?",
+        "a": "Không. Mỗi việc có một báo giá riêng. Bảo trì hằng tháng chỉ khi bạn cần."
+      },
+      {
+        "q": "Tôi ở tỉnh khác, có làm được không?",
+        "a": "Được. Mọi việc trao đổi qua Zalo, cần thì gọi video. Tôi ở TP.HCM nhưng làm cho khách ở mọi nơi."
       }
     ]
   },
