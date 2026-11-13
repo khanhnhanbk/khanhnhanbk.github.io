@@ -226,11 +226,15 @@
     "items": [
       {
         "q": "How long does a website take?",
-        "a": "A landing page usually takes 3–5 days, a business website 1–2 weeks, management software 3–6 weeks. The exact timeline is written in the quote."
+        "a": "A landing page usually takes 5–7 days, a business website 1–2 weeks, management software 3–6 weeks. The exact timeline is written in the quote."
+      },
+      {
+        "q": "How soon can you start?",
+        "a": "Within 3 days of receiving the deposit. If my schedule is full, I'll give you a specific start date before you pay the deposit."
       },
       {
         "q": "How does payment work?",
-        "a": "As agreed in the written quote, before any work starts."
+        "a": "A 50% deposit when you accept the quote, and the other 50% at hand-over, once you've reviewed it and are happy. Payment is by bank transfer, as set out in the quote."
       },
       {
         "q": "I'm not technical — is that a problem?",
@@ -242,7 +246,7 @@
       },
       {
         "q": "What if something needs fixing after hand-over?",
-        "a": "I fix bugs after hand-over; the support period is stated in the quote. New features or maintenance are quoted per request."
+        "a": "Bugs on my side are fixed free for 30 days after hand-over; just tell me on Zalo. After that, content changes are 50,000 VND each; new features are quoted separately."
       },
       {
         "q": "Do I own the website?",
@@ -250,7 +254,7 @@
       },
       {
         "q": "Roughly how much does a website cost?",
-        "a": "It depends on scope. For example, a personal page for a student (tutoring, internship applications) is 500,000 to 1,000,000 VND. For landing pages, websites or software I send a written quote after hearing your needs; advice and quotes are free."
+        "a": "Personal page for a student (tutoring, internship applications): 500,000 / 800,000 / 1,000,000 VND. Landing page for a shop, café or online seller: from 1,500,000 VND. Small automation tool (Google Sheet, order-alert bot): from 1,000,000 VND. Multi-page website or management software: quoted after hearing your needs. Advice and quotes are free."
       },
       {
         "q": "You have a full-time job. Can you keep to the schedule?",

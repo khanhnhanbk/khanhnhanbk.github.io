@@ -227,11 +227,15 @@
     "items": [
       {
         "q": "Làm một website mất bao lâu?",
-        "a": "Landing page thường 3–5 ngày, website doanh nghiệp 1–2 tuần, phần mềm quản lý 3–6 tuần. Thời gian chính xác được ghi rõ trong báo giá."
+        "a": "Landing page thường 5–7 ngày, website doanh nghiệp 1–2 tuần, phần mềm quản lý 3–6 tuần. Thời gian chính xác được ghi rõ trong báo giá."
+      },
+      {
+        "q": "Bao lâu thì bắt đầu làm được?",
+        "a": "Trong 3 ngày sau khi nhận cọc. Nếu đang kín lịch, tôi báo ngày bắt đầu cụ thể trước khi bạn chuyển cọc."
       },
       {
         "q": "Thanh toán như thế nào?",
-        "a": "Theo thỏa thuận ghi rõ trong báo giá bằng văn bản, trước khi bắt đầu làm."
+        "a": "Cọc 50% khi chốt báo giá, 50% còn lại khi bàn giao và bạn đã xem ưng. Thanh toán bằng chuyển khoản, ghi rõ trong báo giá."
       },
       {
         "q": "Tôi không rành công nghệ, có làm được không?",
@@ -243,7 +247,7 @@
       },
       {
         "q": "Sau khi bàn giao, cần sửa thì sao?",
-        "a": "Tôi hỗ trợ sửa lỗi sau bàn giao; thời gian hỗ trợ ghi rõ trong báo giá. Thêm tính năng hoặc bảo trì được báo giá theo từng yêu cầu."
+        "a": "Lỗi do tôi thì sửa miễn phí trong 30 ngày sau bàn giao, báo qua Zalo. Sau đó đổi nội dung 50.000đ/lần; thêm tính năng thì báo giá riêng."
       },
       {
         "q": "Website có thuộc về tôi không?",
@@ -251,7 +255,7 @@
       },
       {
         "q": "Làm web hết khoảng bao nhiêu tiền?",
-        "a": "Tùy phạm vi. Ví dụ trang cá nhân cho sinh viên đi gia sư, xin thực tập từ 500.000đ đến 1.000.000đ. Landing page, website hay phần mềm thì tôi báo giá cụ thể bằng văn bản sau khi nghe bạn kể nhu cầu; tư vấn và báo giá không mất phí."
+        "a": "Trang cá nhân cho sinh viên (gia sư, xin thực tập): 500.000đ / 800.000đ / 1.000.000đ. Landing page cho cửa hàng, quán, người bán online: từ 1.500.000đ. Công cụ tự động nhỏ (Google Sheet, bot báo đơn): từ 1.000.000đ. Website nhiều trang, phần mềm quản lý: báo giá sau khi nghe nhu cầu. Tư vấn và báo giá không mất phí."
       },
       {
         "q": "Bạn đang đi làm toàn thời gian, có kịp tiến độ không?",
