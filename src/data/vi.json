@@ -163,7 +163,7 @@
         "id": "lam-web-sinh-vien",
         "title": "Web cá nhân cho sinh viên",
         "problem": "Sinh viên đi gia sư, xin thực tập cần một link giới thiệu gọn thay cho CV giấy.",
-        "solution": "Trang bán gói 500k–1tr kèm 2 trang mẫu (gia sư, thực tập), giao trong vài ngày.",
+        "solution": "Trang bán gói 500.000đ–1.000.000đ kèm 2 trang mẫu (gia sư, thực tập), giao trong vài ngày.",
         "result": "Mẫu dùng lại được, mỗi trang mới chỉ cần thay nội dung.",
         "tags": [
           "HTML",
@@ -243,7 +243,7 @@
       },
       {
         "q": "Có hỗ trợ tên miền, hosting không?",
-        "a": "Có. Tôi tư vấn và đăng ký giúp tên miền (.vn, .com) và hosting phù hợp; phí tên miền/hosting bạn trả trực tiếp cho nhà cung cấp."
+        "a": "Có. Gói trang cá nhân sinh viên chạy trên hosting miễn phí, không tốn thêm; muốn có tên miền riêng thì bạn chỉ trả phí tên miền. Với landing page, website, tôi tư vấn và đăng ký giúp tên miền (.vn, .com) và hosting phù hợp; phí này bạn trả trực tiếp cho nhà cung cấp."
       },
       {
         "q": "Sau khi bàn giao, cần sửa thì sao?",

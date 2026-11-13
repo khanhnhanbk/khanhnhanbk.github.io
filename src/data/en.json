@@ -161,8 +161,8 @@
       {
         "id": "lam-web-sinh-vien",
         "title": "Personal sites for students",
-        "problem": "Students applying for tutoring jobs or internships need a tidy link instead of a paper CV.",
-        "solution": "A sales page for 500k–1M VND packages with two sample pages (tutor, intern), delivered in days.",
+        "problem": "Students applying for tutoring jobs or internships need a tidy link instead of a paper CV.",
+        "solution": "A sales page for 500,000–1,000,000 VND packages with two sample pages (tutor, intern), delivered in days.",
         "result": "Reusable templates: each new site only needs new content.",
         "tags": [
           "HTML",
@@ -242,7 +242,7 @@
       },
       {
         "q": "Can you help with domain and hosting?",
-        "a": "Yes. I'll recommend and register a domain (.vn, .com) and suitable hosting; you pay those fees directly to the provider."
+        "a": "Yes. Student personal pages run on free hosting at no extra cost; if you want your own domain, you only pay for the domain. For landing pages and websites, I'll recommend and register a domain (.vn, .com) and suitable hosting; you pay those fees directly to the provider."
       },
       {
         "q": "What if something needs fixing after hand-over?",
