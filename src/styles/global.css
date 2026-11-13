@@ -108,6 +108,31 @@ p { text-wrap: pretty; }
   .chu-gradient { background: linear-gradient(120deg, var(--c-brand), var(--c-brand-2) 45%, #c99a2e); -webkit-background-clip: text; background-clip: text; color: transparent; }
 }
 
+/* ===== Quy trình: đường nối 01→04 (đứng yên, chỉ trang trí) =====
+   li là khung bọc (không cắt), thẻ kính nằm bên trong. li::before = chấm, li::after = đoạn nối tới chấm bước sau.
+   Điện thoại (< sm): dòng thời gian dọc bên trái, chấm ngang tâm số. Máy tính (lg): đường ngang ngay trên mép thẻ, chấm trên số.
+   Khoảng sm–lg (2 cột): không vẽ. */
+.buoc-noi { --duong: color-mix(in srgb, var(--c-brand) 30%, transparent); --cham: .625rem; --le: 1.75rem; }
+@media (max-width: 639.98px), (min-width: 1024px) {
+  .buoc-noi > li::before, .buoc-noi > li:not(:last-child)::after { content: ""; position: absolute; pointer-events: none; }
+  .buoc-noi > li::before { width: var(--cham); height: var(--cham); border-radius: 50%; background: var(--c-brand); }
+  .buoc-noi > li:not(:last-child)::after { background: var(--duong); }
+}
+@media (max-width: 639.98px) {
+  .buoc-noi { padding-left: var(--le); }
+  /* --y: tâm số 01 tính từ mép trên thẻ = padding 1.5rem + nửa chiều cao số 3rem/2 */
+  .buoc-noi > li { --y: 3rem; }
+  .buoc-noi > li::before { left: calc(var(--le) / -2 - var(--cham) / 2); top: calc(var(--y) - var(--cham) / 2); }
+  .buoc-noi > li:not(:last-child)::after { left: calc(var(--le) / -2 - 1px); top: var(--y); width: 2px; height: calc(100% + 1rem); }
+}
+@media (min-width: 1024px) {
+  .buoc-noi { padding-top: var(--le); }
+  /* --x: tâm số 01 tính từ mép trái thẻ */
+  .buoc-noi > li { --x: 3.5rem; }
+  .buoc-noi > li::before { top: calc(var(--le) / -2 - var(--cham) / 2); left: calc(var(--x) - var(--cham) / 2); }
+  .buoc-noi > li:not(:last-child)::after { top: calc(var(--le) / -2 - 1px); left: var(--x); height: 2px; width: calc(100% + 1rem); }
+}
+
 /* Trình duyệt không hỗ trợ làm mờ: dùng nền đặc hơn để chữ vẫn đọc được */
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
   .glass { background: var(--g-bg-strong); }

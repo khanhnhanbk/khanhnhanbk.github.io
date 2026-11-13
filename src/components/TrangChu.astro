@@ -142,12 +142,15 @@ const bento = ['lg:col-span-2 lg:row-span-2', 'lg:col-span-2', '', '', 'lg:col-s
   <section class="py-12 lg:py-16">
     <p class="chip len">{d.process.eyebrow}</p>
     <h2 class="len mt-3 text-3xl font-extrabold tracking-tight lg:text-4xl">{d.process.title}</h2>
-    <ol class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+    <!-- .buoc-noi: đường mảnh + chấm nối 01→04 (điện thoại: dọc bên trái; máy tính: ngang phía trên). CSS ở global.css. -->
+    <ol class="buoc-noi mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
       {d.process.steps.map((s, i) => (
-        <li class="glass len p-6">
-          <span class="text-5xl font-extrabold leading-none text-brand/25">{String(i + 1).padStart(2, '0')}</span>
-          <h3 class="mt-3 text-lg font-bold">{s.title}</h3>
-          <p class="mt-1 text-sm text-muted">{s.description}</p>
+        <li class="len relative">
+          <div class="glass h-full p-6">
+            <span class="text-5xl font-extrabold leading-none text-brand/25">{String(i + 1).padStart(2, '0')}</span>
+            <h3 class="mt-3 text-lg font-bold">{s.title}</h3>
+            <p class="mt-1 text-sm text-muted">{s.description}</p>
+          </div>
         </li>
       ))}
     </ol>
