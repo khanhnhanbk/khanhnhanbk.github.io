@@ -19,6 +19,36 @@ const jsonLd = {
   areaServed: 'VN',
   sameAs: [lh.linkedin, lh.github, lh.facebook].filter(Boolean),
 };
+// Person + FAQPage cho Google. Mọi chữ lấy từ JSON đúng ngôn ngữ trang, không chép tay.
+const site = new URL('/', Astro.site).toString();
+const personLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Person',
+      '@id': `${site}#nguoi`,
+      name: d.hero.name,
+      jobTitle: d.hero.role,
+      worksFor: { '@type': 'Organization', name: 'Akselos' },
+      alumniOf: { '@type': 'CollegeOrUniversity', name: 'Ho Chi Minh City University of Technology (HCMUT)' },
+      url: url.toString(),
+      image: new URL('/avatar.jpg', Astro.site).toString(),
+      sameAs: [lh.github, lh.linkedin, lh.facebook].filter(Boolean),
+    },
+    {
+      '@type': 'FAQPage',
+      '@id': `${url}#faq`,
+      inLanguage: locale,
+      mainEntity: d.faq.items.map((x) => ({
+        '@type': 'Question',
+        name: x.q,
+        acceptedAnswer: { '@type': 'Answer', text: x.a },
+      })),
+    },
+  ],
+};
+// Đổi "<" thành \u003c để chữ trong JSON không thể đóng thẻ <script> sớm.
+const ldJson = (o) => JSON.stringify(o).replace(/</g, '\\u003c');
 ---
 <!doctype html>
 <html lang={locale}>
@@ -46,7 +76,8 @@ const jsonLd = {
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <noscript><style>.len{opacity:1!important;transform:none!important}</style></noscript>
-  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  <script type="application/ld+json" set:html={ldJson(jsonLd)} />
+  <script type="application/ld+json" set:html={ldJson(personLd)} />
   <script is:inline>
     try {
       const t = localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
