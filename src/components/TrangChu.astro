@@ -119,6 +119,12 @@ const bento = ['lg:col-span-2 lg:row-span-2', 'lg:col-span-2', '', '', 'lg:col-s
     </div>
   </section>
 
+  <!-- ===== LỜI MỜI LẶP LẠI: cùng nút chính ở hero + một dòng trấn an ===== -->
+  <div class="cta-lap len flex flex-col items-center gap-3 py-4 text-center">
+    <a href={lh.zalo} target="_blank" rel="noopener" class="btn btn-brand">{d.hero.ctaPrimary}<Icon name="arrowRight" class="size-4" /></a>
+    <p class="max-w-md text-sm text-balance! text-muted">{d.ctaRepeat.note}</p>
+  </div>
+
   <!-- ===== ĐÁNH GIÁ (ẩn khi chưa có) ===== -->
   {d.testimonials.items.length > 0 && (
     <section class="py-12 lg:py-16">
@@ -146,6 +152,12 @@ const bento = ['lg:col-span-2 lg:row-span-2', 'lg:col-span-2', '', '', 'lg:col-s
       ))}
     </ol>
   </section>
+
+  <!-- ===== LỜI MỜI LẶP LẠI: cùng nút chính ở hero + một dòng trấn an ===== -->
+  <div class="cta-lap len flex flex-col items-center gap-3 py-4 text-center">
+    <a href={lh.zalo} target="_blank" rel="noopener" class="btn btn-brand">{d.hero.ctaPrimary}<Icon name="arrowRight" class="size-4" /></a>
+    <p class="max-w-md text-sm text-balance! text-muted">{d.ctaRepeat.note}</p>
+  </div>
 
   <!-- ===== VỀ TÔI ===== -->
   <section id="about" class="py-12 lg:py-16">

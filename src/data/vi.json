@@ -218,6 +218,9 @@
       }
     ]
   },
+  "ctaRepeat": {
+    "note": "Không cần biết kỹ thuật. Dù không làm cùng, bạn vẫn có gợi ý nên làm web kiểu nào và tốn khoảng bao nhiêu."
+  },
   "faq": {
     "eyebrow": "Hỏi đáp",
     "title": "Câu hỏi thường gặp",

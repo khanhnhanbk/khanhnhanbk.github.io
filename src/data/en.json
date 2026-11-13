@@ -217,6 +217,9 @@
       }
     ]
   },
+  "ctaRepeat": {
+    "note": "No tech knowledge needed. Even if we don't work together, you'll leave knowing what kind of site fits and roughly what it costs."
+  },
   "faq": {
     "eyebrow": "FAQ",
     "title": "Frequently asked questions",
