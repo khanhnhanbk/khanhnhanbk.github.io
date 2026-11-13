@@ -32,7 +32,27 @@ const bento = ['lg:col-span-2 lg:row-span-2', 'lg:col-span-2', '', '', 'lg:col-s
 
 <main class="mx-auto max-w-6xl px-4 lg:px-6">
   <!-- ===== HERO ===== -->
-  <section class="grid items-center gap-8 pt-14 pb-10 lg:grid-cols-[1.25fr_1fr] lg:gap-12 lg:pt-24 lg:pb-16">
+  <section class="relative isolate grid items-center gap-8 pt-14 pb-10 lg:grid-cols-[1.25fr_1fr] lg:gap-12 lg:pt-24 lg:pb-16">
+    <!-- Dây tín hiệu: vài đường cong mảnh chạy chậm phía sau hero (CSS ở .day-tin trong global.css) -->
+    <div class="day-tin" aria-hidden="true">
+      <svg viewBox="0 0 1440 640" preserveAspectRatio="none" focusable="false">
+        <defs>
+          <path id="dt1" pathLength="1000" d="M-40 120 C 260 40, 520 220, 820 130 S 1260 60, 1480 150" />
+          <path id="dt2" pathLength="1000" d="M-40 230 C 220 300, 480 140, 760 220 S 1180 320, 1480 240" />
+          <path id="dt3" pathLength="1000" d="M-40 330 C 300 260, 600 420, 900 330 S 1300 260, 1480 350" />
+          <path id="dt4" pathLength="1000" d="M-40 420 C 240 500, 560 340, 840 430 S 1220 520, 1480 440" />
+          <path id="dt5" pathLength="1000" d="M-40 520 C 280 450, 620 600, 940 510 S 1290 460, 1480 540" />
+          <path id="dt6" pathLength="1000" d="M-40 70 C 320 160, 640 0, 980 90 S 1340 170, 1480 80" />
+          <path id="dt7" pathLength="1000" d="M-40 590 C 260 540, 540 640, 860 580 S 1260 540, 1480 600" />
+        </defs>
+        <g class="day-tin-nen">
+          <use href="#dt1" /><use href="#dt2" /><use href="#dt3" /><use href="#dt4" /><use href="#dt5" /><use href="#dt6" /><use href="#dt7" />
+        </g>
+        <g class="day-tin-xung">
+          <use href="#dt1"/><use href="#dt2"/><use href="#dt3"/><use href="#dt4"/><use href="#dt5"/><use href="#dt6"/><use href="#dt7"/>
+        </g>
+      </svg>
+    </div>
     <div class="len">
       <span class="chip"><span class="size-2 animate-pulse rounded-full bg-brand"></span>{d.hero.badge}</span>
       <h1 class="mt-5 text-4xl leading-[1.08] font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
@@ -82,8 +102,8 @@ const bento = ['lg:col-span-2 lg:row-span-2', 'lg:col-span-2', '', '', 'lg:col-s
     <p class="len mt-3 max-w-2xl text-muted">{d.services.subtitle}</p>
     <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:auto-rows-fr">
       {d.services.items.map((s, i) => (
-        <article class={`glass len flex flex-col p-6 ${bento[i] ?? ''} ${i === 0 ? 'sm:col-span-2' : ''}`}>
-          <span class={`grid place-items-center rounded-2xl ${i === 0 ? 'size-14 bg-gradient-to-br from-brand to-brand-2 text-brand-ink' : 'size-11 bg-soft text-brand'}`}>
+        <article class={`glass the-dv len flex flex-col p-6 ${bento[i] ?? ''} ${i === 0 ? 'sm:col-span-2' : ''}`}>
+          <span class={`vong-icon grid place-items-center rounded-full ${i === 0 ? 'size-14 bg-gradient-to-br from-brand to-brand-2 text-brand-ink' : 'size-11 bg-soft text-brand'}`}>
             <Icon name={s.icon} class={i === 0 ? 'size-7' : 'size-5'} />
           </span>
           <h3 class={`mt-4 font-bold ${i === 0 ? 'text-2xl lg:text-3xl' : 'text-lg'}`}>{s.title}</h3>
